@@ -3,7 +3,7 @@
 namespace Scrapper\Source;
 
 use Scrapper\AbstractSource;
-use Scrapper\PostInterface;
+use Scrapper\Post;
 use Scrapper\PostInterface;
 use Scrapper\SourceInterface;
 

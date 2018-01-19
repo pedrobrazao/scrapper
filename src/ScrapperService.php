@@ -37,7 +37,7 @@ class ScrapperService implements ScrapperServiceInterface
      */
     public function loadSource(SourceInterface $source): array
     {
-
+        return $source->load();
     }
 
     /**
@@ -49,7 +49,7 @@ class ScrapperService implements ScrapperServiceInterface
      */
     public function parseUrl(SourceInterface $source, string $url): PostInterface
     {
-
+        return $source->parse($url);
     }
 
 }
