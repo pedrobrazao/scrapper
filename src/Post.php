@@ -57,7 +57,7 @@ class Post implements PostInterface
      */
     public function getSource(): SourceInterface
     {
-
+        return $this->source;
     }
 
     /**
@@ -67,7 +67,7 @@ class Post implements PostInterface
      */
     public function getDate(): DateTimeInterface
     {
-
+        return $this->date;
     }
 
     /**
@@ -77,7 +77,7 @@ class Post implements PostInterface
      */
     public function getTitle(): string
     {
-
+        return $this->title;
     }
 
     /**
@@ -87,7 +87,7 @@ class Post implements PostInterface
      */
     public function getSummary()
     {
-
+        return $this->summary;
     }
 
     /**
@@ -97,7 +97,6 @@ class Post implements PostInterface
      */
     public function getUrl(): string
     {
-
+        return $this->url;
     }
-
 }

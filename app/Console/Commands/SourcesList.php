@@ -48,7 +48,7 @@ class SourcesList extends Command
         $this->info(sprintf('%d sources available:', count($sources)));
 
         foreach ($sources as $source) {
-            $this->line($source);
+            $this->line(str_replace('\\', '\\\\', $source));
         }
     }
 }
