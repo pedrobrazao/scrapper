@@ -71,6 +71,13 @@ class SourcesLoad extends Command
         }
     }
 
+    /**
+     * Handle a single source.
+     *
+     * @param string $class
+     * @param int $limit
+     * @return void
+     */
     protected function handleSource(string $class, int $limit)
     {
         $this->info(sprintf('Loading source "%s"', $class));
@@ -78,7 +85,12 @@ class SourcesLoad extends Command
         /* @var $source \Scrapper\SourceInterface */
         $source = new $class();
 
-        $urls = $source->load();
+        try {
+           $urls = $source->load();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
+
         $counter = 0;
 
         foreach ($urls as $url) {
@@ -88,7 +100,12 @@ class SourcesLoad extends Command
 
             $this->line($url);
 
-            $scrapped = $source->parse($url);
+            try {
+                $scrapped = $source->parse($url);
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+                continue;
+            }
 
             $post = new Post([
                 'source' => $scrapped->getSource()->getName(),
@@ -108,4 +125,5 @@ class SourcesLoad extends Command
 
         $this->line(sprintf('%d new posts created.', $counter));
     }
+
 }
