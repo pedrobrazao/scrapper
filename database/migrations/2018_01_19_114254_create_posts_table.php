@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('source');
             $table->date('date');
             $table->string('title');
-            $table->longText('summary');
+            $table->longText('summary')->nullable();
             $table->string('url')->unique();
         });
     }
